@@ -2,26 +2,40 @@
 <html lang="en" xmlns:th="http://wwww.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Patients</title>
+<link rel="stylesheet"  type="text/css" href="/webjars/bootstrap/5.1.1/css/bootstrap.min.css">
 </head>
 <body>
-   <h3>List of Patients</h3>
-   <table>
-	   <thead>
-		   <tr>
-			   <td>ID</td> <td>First Name</td> <td>Last Name</td> <td>Date</td> <td>Score</td> <td>Sick</td>
-		   </tr>  
-	   </thead>
-	   <tbody>
-		   <tr th:each="p:${listPatients}">
-			   <td th:text="${p.id}"></td>
-			   <td th:text="${p.firstName}"></td>
-			   <td th:text="${p.lastName}"></td>
-			   <td th:text="${p.dateOfBirth}"></td>
-			   <td th:text="${p.score}"></td>
-			   <td th:text="${p.sick}"></td>
-		   </tr>
-	   </tbody>
-   </table>
+	<div class="container">
+		<div class="p-3 m-2">
+			<div class="card">
+				<div class="card-header">
+					<h3>List of Patients</h3>
+				</div>
+				<div class="card-body">
+					<table class="table">
+					   <thead>
+						   <tr>
+							   <td>ID</td> <td>First Name</td> <td>Last Name</td> <td>Date</td> <td>Score</td> <td>Sick</td>
+						   </tr>  
+					   </thead>
+					   <tbody>
+						   <tr th:each="p:${listPatients}">
+							   <td th:text="${p.id}"></td>
+							   <td th:text="${p.firstName}"></td>
+							   <td th:text="${p.lastName}"></td>
+							   <td th:text="${p.dateOfBirth}"></td>
+							   <td th:text="${p.score}"></td>
+							   <td th:text="${p.sick}"></td>
+							   <td>
+								  <a class="btn btn-danger" th:href="@{deletePatient(id=${p.id})}">Delete</a> 
+							   </td>
+						   </tr>
+					   </tbody>
+				   </table>
+				</div>
+			</div>
+		</div>	   
+	</div>
  </body>
 </html>
