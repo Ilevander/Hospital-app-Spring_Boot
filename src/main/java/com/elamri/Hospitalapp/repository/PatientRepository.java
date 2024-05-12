@@ -9,5 +9,5 @@ import com.elamri.Hospitalapp.entities.Patient;
 
 //Interface for business Logic and DAO Layer
 public interface PatientRepository extends JpaRepository<Patient, Long>{
-	Page<Patient> findByFirstNameContainsIgnoreCase(String keyword, Pageable pageRequest);
+	Page<Patient> findByFirstNameContainsIgnoreCaseOrLastNameContainsIgnoreCase(String firstName, String lastName , Pageable pageRequest);
 }
