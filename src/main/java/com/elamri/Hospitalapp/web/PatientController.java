@@ -1,6 +1,5 @@
 package com.elamri.Hospitalapp.web;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -8,6 +7,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.elamri.Hospitalapp.entities.Patient;
@@ -33,9 +33,9 @@ public class PatientController {
 	}
 	
 	@GetMapping("/deletePatient")
-	public String delete(@RequestParam(name = "id")Long id) {
-		patientRepository.deleteById(id); 
-		return "redirect:/index"; 
+	public String delete(@RequestParam(name = "id") Long id, @RequestParam(name = "keyword") String keyword, @RequestParam(name = "page") int page) {
+	    patientRepository.deleteById(id);
+	    return "redirect:/index?page=" + page + "&keyword=" + keyword;
 	}
 
 }  

@@ -33,8 +33,8 @@
 							   <td th:text="${p.score}"></td>
 							   <td th:text="${p.sick}"></td>
 							   <td>
-								  <a onclick="return confirm('Are you sure you want to delete this record ?')" class="btn btn-danger" th:href="@{deletePatient(id=${p.id})}">Delete</a> 
-							   </td>
+                                   <a onclick="return confirm('Are you sure you want to delete this record ?')" class="btn btn-danger" th:href="@{/deletePatient(id=${p.id}, keyword=${keyword}, page=${currentPage})}">Delete</a>
+                               </td>
 						   </tr>
 					   </tbody>
 				   </table>
