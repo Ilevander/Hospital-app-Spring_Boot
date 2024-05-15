@@ -32,15 +32,15 @@ public class Patient {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@NotEmpty
-	@Size(min=4,max=20)
+//	@NotEmpty
+//	@Size(min=4,max=20)
 	private String firstName;
-	@NotEmpty
-	@Size(min=4,max=20)
+//	@NotEmpty
+//	@Size(min=4,max=20)
 	private String lastName;
-	@Temporal(TemporalType.DATE)
+//	@Temporal(TemporalType.DATE)
 	private Date dateOfBirth;
-	@Min(10)
+//	@Min(10)
 	private int score;
 	private boolean sick;
 	
