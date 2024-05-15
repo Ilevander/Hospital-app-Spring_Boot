@@ -1,17 +1,19 @@
 package com.elamri.Hospitalapp.web;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.elamri.Hospitalapp.entities.Patient;
 import com.elamri.Hospitalapp.repository.PatientRepository;
+
+import jakarta.validation.Valid;
 
 @Controller
 public class PatientController {
@@ -44,5 +46,11 @@ public class PatientController {
 		return "formPatient";
 	}
 	
+	@PostMapping("/savePatient")
+	public String savePatient(@Valid Patient patient , BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) return "formPatient";
+		patientRepository.save(patient);
+		return "formPatient"; 
+	}
 
 }  
