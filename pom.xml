@@ -95,6 +95,8 @@
 		<dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-devtools</artifactId>
+		    <scope>runtime</scope>
+		    <optional>true</optional>
 		    <version>3.2.0</version>
 		</dependency>
 	  </dependencies>
