@@ -59,6 +59,7 @@ public class HospitalAppApplication {
 		};
 	}
 	
+	@Bean
 	PasswordEncoder passwordEncoder(){
 		return new BCryptPasswordEncoder();
 	}
