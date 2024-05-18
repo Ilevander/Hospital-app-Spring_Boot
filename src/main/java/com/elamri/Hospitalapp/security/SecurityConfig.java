@@ -32,6 +32,7 @@ public class SecurityConfig {
             .formLogin().loginPage("/login").permitAll()
             .and()
             .authorizeHttpRequests(authorize -> authorize
+                .requestMatchers("/webjars/**","/h2-console/**").permitAll()
                 .requestMatchers("/user/**").hasRole("USER")
                 .requestMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
