@@ -16,7 +16,7 @@
         <a class="nav-link active" th:href="@{/user/index}">Home</a>
       </li>
       <li class="nav-item dropdown">
-        <li>
+         <li th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
 		    <button><a class="dropdown-item" type="submit" th:href="@{/admin/formPatient}">New</a></button> 
 		  </li>
       </li>

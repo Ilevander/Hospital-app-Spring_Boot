@@ -35,8 +35,10 @@ public class SecurityConfig {
                 .requestMatchers("/user/**").hasRole("USER")
                 .requestMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
-            );
+                )
+                .exceptionHandling().accessDeniedPage("/notAuthorized");
         return httpSecurity.build();
+
     }
 
 }
