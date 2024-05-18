@@ -1,16 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template.html"
+>
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title>Patients</title>
 </head>
 <body>
-<div layout:fragment="content">
+  <div layout:fragment="content">
 	<div class="container">
-		<div class="alert alert-danger m-3">
-			Not Autorized
-		</div>
-		   
+		<div class="p-3 m-2">
+			<div class="card">
+				<div class="alert alert-danger m-3">
+					<h3>You are Not Authorized</h3>
+				</div>
+
+			</div>
+		</div>	   
 	</div>
    </div>
 </body>

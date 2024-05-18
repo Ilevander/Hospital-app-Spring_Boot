@@ -1,63 +1,40 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="template.html"
->
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta charset="UTF-8">
-    <title>Patients</title>
+    <title>Hospital</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/webjars/bootstrap-icons/1.10.3/font/bootstrap-icons.css">
+    <script src="/webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-  <div layout:fragment="content">
-    <div class="container">
-        <div class="p-3 m-2">
-            <div class="card">
-                <div class="card-header">
-                    <h3>List of Patients</h3>
-                </div>
-                <div class="card-body">
-                    <form method="get" th:action="@{/user/index}" th:value="${keyword}">
-                        <label> Look for a patient ?</label> 
-                        <input type="text" name="keyword">
-                        <button class="btn btn-outline-info">Search</button>
-                    </form>
-                    <table class="table">
-                       <thead>
-                           <tr>
-                               <td>ID</td> <td>First Name</td> <td>Last Name</td> <td>Date</td> <td>Score</td> <td>Sick</td>
-                           </tr>  
-                       </thead>
-                       <tbody>
-                           <tr th:each="p:${listPatients}">
-                               <td th:text="${p.id}"></td>
-                               <td th:text="${p.firstName}"></td>
-                               <td th:text="${p.lastName}"></td>
-                               <td th:text="${p.dateOfBirth}"></td>
-                               <td th:text="${p.score}"></td>
-                               <td th:text="${p.sick}"></td>
-                               <td th:if="${#authorization.expression('hasRole(\'ADMIN\')')}">
-                                   <a onclick="return confirm('Are you sure you want to delete this record ?')" class="btn btn-danger" th:href="@{/admin/deletePatient(id=${p.id}, keyword=${keyword}, page=${currentPage})}">Delete</a>
-                               </td>
-                               <td th:if="${#authorization.expression('hasRole(\'ADMIN\')')}">
-                                    <a class="btn btn-danger" th:href="@{/admin/editPatient(id=${p.id})}">
-                                      <i class="bi bi-pencil"></i>
-                                    </a>
-                               </td>
-                           </tr>
-                       </tbody>
-                   </table>
-                   <ul class="nav nav-pills">
-                       <li th:each="page,status: ${pages}">
-                           <a th:class="${status.index==currentPage? 'btn btn-info m-1':'btn btn-outline-info m-1'}" 
-                              th:href="@{/user/index(page=${status.index},keyword=${keyword})} " 
-                              th:text="${status.index}">
-                            </a>
-                       </li>
-                   </ul>
-                </div>
-            </div>
-        </div>     
-    </div>
-   </div>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <div class="container-fluid">
+    <ul class="navbar-nav">
+	      <li class="nav-item">
+	         <a class="nav-link active" th:href="@{/user/index}">Home</a>
+	      </li>
+	      <li class="nav-item dropdown">
+	      <li>
+			    <button><a class="dropdown-item" type="submit" th:href="@{/admin/formPatient}">New</a></button> 
+		 </li>
+	      </li>
+    </ul>
+    <ul class="navbar-nav ms-auto">
+	      <li class="nav-item">
+		        <a class="nav-link" role="button" th:text="${#authentication.name}"></a>
+				<li><button><a class="dropdown-item" type="submit" th:href="@{/logout}">Logout</a></button> 
+		 </li>
+	      </li>
+    </ul>
+  </div>
+</nav>
+
+<div layout:fragment="content">
+
+</div>
+
 </body>
 </html>
