@@ -21,7 +21,7 @@ public class PatientController {
 	@Autowired
 	private PatientRepository patientRepository;
 	
-	@GetMapping("/index")
+	@GetMapping("/user/index")
 	public String index(Model model , 
 			            @RequestParam( name="page" , defaultValue = "0") int page,
 			            @RequestParam(name="size" , defaultValue = "5") int size,
@@ -34,26 +34,26 @@ public class PatientController {
 		return "patients";
 	}
 	
-	@GetMapping("/deletePatient")
+	@GetMapping("/admin/deletePatient")
 	public String delete(@RequestParam(name = "id") Long id, @RequestParam(name = "keyword") String keyword, @RequestParam(name = "page") int page) {
 	    patientRepository.deleteById(id);
-	    return "redirect:/index?page=" + page + "&keyword=" + keyword;
+	    return "redirect:/user/index?page=" + page + "&keyword=" + keyword;
 	}
 	
-	@GetMapping("/formPatient")
+	@GetMapping("/admin/formPatient")
 	public String formPatient(Model model) {
 		model.addAttribute("patient",new Patient());
 		return "formPatient";
 	}
 	
-	@PostMapping("/savePatient")
+	@PostMapping("/admin/savePatient")
 	public String savePatient(@Valid Patient patient , BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) return "formPatient";
 		patientRepository.save(patient);
 		return "formPatient"; 
 	}
 	
-	@GetMapping("/editPatient")
+	@GetMapping("/admin/editPatient")
 	public String editPatient(@RequestParam(name = "id") Long id, Model model) {
 		Patient patient = patientRepository.findById(id).get();
 		model.addAttribute("patient",patient);
@@ -62,7 +62,7 @@ public class PatientController {
 	
 	@GetMapping("/")
 	public String home() {
-		return "redirect:/index";
+		return "redirect:/user/index";
 	}
 
 }   
