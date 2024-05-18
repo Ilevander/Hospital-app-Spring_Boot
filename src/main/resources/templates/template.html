@@ -13,21 +13,27 @@
   <div class="container-fluid">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link active" th:href="@{index}">Home</a>
+        <a class="nav-link active" th:href="@{/index}">Home</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Patients</a>
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Patients</a>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" th:href="@{formPatient}">New</a></li>
-          <li><a class="dropdown-item" th:href="@{index}">Search</a></li>
+          <li>
+			  <a class="dropdown-item" th:href="@{/formPatient}">New</a>
+	      </li>
+          <li><a class="dropdown-item" th:href="@{/index}">Search</a></li>
         </ul>
       </li>
     </ul>
-    <ul class="navbar-nav">
+    <ul class="navbar-nav ms-auto">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">[User]</a>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Logout</a></li>
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" th:text="${#authentication.name}"></a>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li>
+			  <form method="post" th:action="@{/logout}">
+				  <button><a class="dropdown-item" type="submit">Logout</a></button> 
+			  </form>
+		  </li>
           <li><a class="dropdown-item" href="#">Profile</a></li>
         </ul>
       </li>
