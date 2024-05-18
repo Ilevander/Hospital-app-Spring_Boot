@@ -31,15 +31,16 @@ public class SecurityConfig {
         httpSecurity
             .formLogin().loginPage("/login").permitAll()
             .and()
+            .rememberMe()
+            .and()
             .authorizeHttpRequests(authorize -> authorize
-                .requestMatchers("/webjars/**","/h2-console/**").permitAll()
+                .requestMatchers("/webjars/**", "/h2-console/**").permitAll()
                 .requestMatchers("/user/**").hasRole("USER")
                 .requestMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
-                )
-                .exceptionHandling().accessDeniedPage("/notAuthorized");
+            )
+            .exceptionHandling().accessDeniedPage("/notAuthorized");
         return httpSecurity.build();
-
     }
 
 }
