@@ -27,6 +27,7 @@ public class SecurityConfig {
     	return new JdbcUserDetailsManager(dataSource);
     }
     
+    // (1) Authentication + Roles + Encryption = using InMemoryAthentication
 //    @Bean
 //    public InMemoryUserDetailsManager inMemoryUserDetailsManager() {
 //        return new InMemoryUserDetailsManager(

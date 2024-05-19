@@ -62,6 +62,7 @@ public class HospitalAppApplication {
 		};
 	}
 	
+	// (2) Authentication + Roles + Encryption = using JdbcUserDetailsManager
 	@Bean
     CommandLineRunner commandLineRunner(JdbcUserDetailsManager jdbcUserDetailsManager, PasswordEncoder passwordEncoder) {
         return args -> {
