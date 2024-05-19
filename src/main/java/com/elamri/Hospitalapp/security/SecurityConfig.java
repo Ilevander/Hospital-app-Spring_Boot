@@ -31,7 +31,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
-            .formLogin().loginPage("/login").permitAll()
+            .formLogin().loginPage("/login").defaultSuccessUrl("/").permitAll()
             .and()
             .rememberMe()
             .and()
