@@ -1,4 +1,4 @@
-package com.elamri.Hospitalapp.security;
+package com.elamri.Hospitalapp.security.services;
 
 import com.elamri.Hospitalapp.security.entities.AppRole;
 import com.elamri.Hospitalapp.security.entities.AppUser;
