@@ -25,7 +25,7 @@ public class AccountServiceImpl implements AccountService{
     
 	@Override
 	public AppUser addNewUser(String username, String password, String email, String confirmPassword) {
-		AppUser appUser = appUserRepository.finByUsername(username);
+		AppUser appUser = appUserRepository.findByUsername(username);
 		if(appUser!=null) throw new RuntimeException("This User Already Exist");
 		if(!password.equals(confirmPassword)) throw new RuntimeException("Password Not match");
 		appUser = AppUser.builder()
@@ -50,16 +50,22 @@ public class AccountServiceImpl implements AccountService{
 
 	@Override
 	public void addRoleToUser(String username, String role) {
-		AppUser appUser = appUserRepository.finByUsername(username);
+		AppUser appUser = appUserRepository.findByUsername(username);
 		AppRole appRole = appRoleRepository.findById(role).get();
 		appUser.getRoles().add(appRole);
 	}
 
 	@Override
 	public void removeRoleFromUser(String username, String role) {
-		AppUser appUser = appUserRepository.finByUsername(username);
+		AppUser appUser = appUserRepository.findByUsername(username);
 		AppRole appRole = appRoleRepository.findById(role).get();
 		appUser.getRoles().remove(appRole);
+	}
+
+	@Override
+	public AppUser loadUserByUsername(String username) {
+        
+		return appUserRepository.findByUsername(username);
 	}
 
 }

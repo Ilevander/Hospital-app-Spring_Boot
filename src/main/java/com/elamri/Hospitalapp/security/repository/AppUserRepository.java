@@ -6,5 +6,5 @@ import com.elamri.Hospitalapp.security.entities.AppUser;
 
 public interface AppUserRepository extends JpaRepository<AppUser, String> {
 
-	AppUser finByUsername(String username);
+	AppUser findByUsername(String username);
 }
